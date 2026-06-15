@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Cadu Avelar — Dev. em desenvolvimento. Estudante de Ciência da Computação no UniCeub." />
+  <meta name="author" content="Cadu Avelar" />
+  <title>Cadu Avelar</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header" id="header">
+    <div class="header__inner">
+      <a href="#inicio" class="header__logo">Cadu Avelar</a>
+      <nav class="header__nav" id="nav">
+        <a href="#inicio"       class="header__link header__link--active">Início</a>
+        <a href="#experiencias" class="header__link">Experiências</a>
+      </nav>
+      <button class="header__search" aria-label="Buscar">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+        </svg>
+      </button>
+      <button class="header__hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <nav class="header__mobile-nav" id="mobileNav">
+      <a href="#inicio"       class="header__mobile-link" data-nav>Início</a>
+      <a href="#experiencias" class="header__mobile-link" data-nav>Experiências</a>
+    </nav>
+  </header>
+
+
+  <!-- HERO -->
+  <section class="hero" id="inicio">
+    <!-- Imagem de fundo (mesa, notebook, celular) -->
+    <div class="hero__bg">
+      <!-- INSERIR IMAGEM DE FUNDO: images/hero.jpg -->
+      <img src="images/hero.jpg" alt="" class="hero__bg-img" onerror="this.style.display='none'" />
+      <div class="hero__bg-placeholder"></div>
+    </div>
+    <div class="hero__overlay"></div>
+
+    <div class="hero__content">
+      <!-- Foto com moldura de cantos decorativa -->
+      <div class="hero__photo-wrap">
+        <div class="hero__frame-tl"></div>
+        <div class="hero__frame-br"></div>
+        <!-- INSERIR FOTO PRINCIPAL: images/sobre.jpg -->
+        <img src="images/sobre.jpeg" alt="Cadu Avelar" class="hero__photo"
+             onerror="this.style.display='none'" />
+        <div class="hero__photo-ph"><!-- images/sobre.jpg --></div>
+      </div>
+
+      <!-- Título e subtítulo -->
+      <div class="hero__text">
+        <h1 class="hero__name">Cadu Avelar</h1>
+        <p class="hero__role">Dev. em desenvolvimento</p>
+      </div>
+    </div>
+
+    <!-- Seta para baixo -->
+    <a href="#citacao" class="hero__down" aria-label="Rolar para baixo">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+        <path d="M6 9l6 6 6-6"/>
+      </svg>
+    </a>
+  </section>
+
+
+  <!-- CITAÇÃO -->
+  <section class="citacao" id="citacao">
+    <div class="container">
+      <blockquote class="citacao__frase">
+        "Foco, disciplina e consistência:<br />
+        os mesmos princípios do esporte<br />
+        aplicados à tecnologia."
+      </blockquote>
+      <cite class="citacao__autor">Cadu Avelar</cite>
+    </div>
+  </section>
+
+
+  <!-- SOBRE MIM -->
+  <section class="sobre" id="sobre">
+    <div class="container">
+      <h2 class="sobre__titulo">Sobre mim</h2>
+      <p class="sobre__bio">
+        "Me chamo Carlos Eduardo de Avelar Rodrigues, mas pode me chamar de Cadu Avelar. Tenho 18 anos e
+        sou estudante de Ciência da Computação no UniCeub. Minha jornada começou no Colégio Madre
+        Carmen Salles, onde me formei e onde pude explorar diversas facetas: das artes, participando de projetos
+        e peças de teatro, à liderança esportiva como capitão das equipes de futebol e futsal.<br /><br />
+        Desde criança, sou fascinado por entender o que acontece 'por trás das telas', mas é no campo e nas
+        quadras que encontro minha outra grande paixão. O futebol e o futsal não são apenas hobbies para mim;
+        hoje jogo futsal federado e trago a disciplina e o amor pelo esporte para tudo o que faço na área tech."
+      </p>
+
+      <!-- Galeria 5 fotos em linha — igual ao original -->
+      <div class="sobre__galeria">
+        <div class="sobre__gfoto">
+          <!-- INSERIR: images/galeria1.jpg -->
+          <img src="images/galeria1.jpeg" alt="Foto 1" onerror="this.parentElement.classList.add('ph')" />
+          <div class="gfoto__ph">galeria1.jpg</div>
+        </div>
+        <div class="sobre__gfoto">
+          <!-- INSERIR: images/galeria2.jpg -->
+          <img src="images/galeria2.jpeg" alt="Foto 2" onerror="this.parentElement.classList.add('ph')" />
+          <div class="gfoto__ph">galeria2.jpg</div>
+        </div>
+        <div class="sobre__gfoto">
+          <!-- INSERIR: images/galeria3.jpg -->
+          <img src="images/galeria3.jpeg" alt="Foto 3" onerror="this.parentElement.classList.add('ph')" />
+          <div class="gfoto__ph">galeria3.jpg</div>
+        </div>
+        <div class="sobre__gfoto">
+          <!-- INSERIR: images/galeria4.jpg -->
+          <img src="images/galeria4.jpeg" alt="Foto 4" onerror="this.parentElement.classList.add('ph')" />
+          <div class="gfoto__ph">galeria4.jpg</div>
+        </div>
+        <div class="sobre__gfoto">
+          <!-- INSERIR: images/galeria5.jpg -->
+          <img src="images/galeria5.jpeg" alt="Foto 5" onerror="this.parentElement.classList.add('ph')" />
+          <div class="gfoto__ph">galeria5.jpg</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- HABILIDADES -->
+  <section class="habilidades" id="experiencias">
+    <div class="container">
+
+      <h2 class="habilidades__titulo">Minhas<br />Habilidades</h2>
+
+      <!-- Bloco 1: foto esq + itens 01-03 dir -->
+      <div class="hab__row">
+        <div class="hab__foto-wrap">
+          <!-- INSERIR: images/habilidades.jpg -->
+          <img src="images/cadu2.jpeg" alt="Cadu Avelar" class="hab__foto"
+               onerror="this.parentElement.classList.add('ph')" />
+          <div class="habfoto__ph"><!-- images/habilidades.jpg --></div>
+        </div>
+
+        <div class="hab__lista">
+          <div class="hab__item">
+            <span class="hab__num">01</span>
+            <div>
+              <h3 class="hab__nome">Desenvolvimento Front-End</h3>
+              <p class="hab__desc">Iniciando no desenvolvimento Front-End com<br />HTML, CSS e JavaScript</p>
+            </div>
+          </div>
+          <div class="hab__item">
+            <span class="hab__num">02</span>
+            <div>
+              <h3 class="hab__nome">Desenvolvimento Back-End</h3>
+              <p class="hab__desc">Iniciando no desenvolvimento Back-End com<br />C e Python</p>
+            </div>
+          </div>
+          <div class="hab__item">
+            <span class="hab__num">03</span>
+            <div>
+              <h3 class="hab__nome">Grande habilidade social</h3>
+              <p class="hab__desc">Muita facilidade de trabalho em equipe e<br />convivência com outras pessoas.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bloco 2: item 04 esq + imagem código dir -->
+      <div class="hab__row hab__row--inv">
+        <div class="hab__item hab__item--lg">
+          <span class="hab__num">04</span>
+          <div>
+            <h3 class="hab__nome">Raciocínio Lógico</h3>
+            <p class="hab__desc">Raciocínio lógico elevado e rápido.</p>
+          </div>
+        </div>
+        <div class="hab__foto-wrap hab__foto-wrap--code">
+          <!-- INSERIR: images/codigo.jpg -->
+          <img src="images/code.jpeg" alt="Código" class="hab__foto"
+               onerror="this.parentElement.classList.add('ph')" />
+          <div class="habfoto__ph"><!-- images/codigo.jpg --></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- CONTATO -->
+  <section class="contato" id="contato">
+    <div class="container">
+
+      <h2 class="contato__titulo">Entre em Contato</h2>
+
+      <div class="contato__dados">
+        <div class="contato__campo">
+          <span class="contato__label">Phone Number</span>
+          <!-- EDITAR: seu número -->
+          <a href="tel:+5561996246908" class="contato__valor">+55 (61) 99624-6908</a>
+        </div>
+        <div class="contato__campo">
+          <span class="contato__label">Email</span>
+          <!-- EDITAR: seu e-mail -->
+          <a href="mailto:caduavelarr.dev@gmail.com" class="contato__valor">caduavelarr.dev@gmail.com</a>
+        </div>
+      </div>
+
+      <!-- Redes sociais -->
+      <div class="contato__redes-bloco">
+        <h3 class="contato__redes-titulo">Redes Sociais</h3>
+        <div class="contato__icones">
+
+          <a href="https://www.instagram.com/caduavelarr" target="_blank" rel="noopener"
+             class="social__ico" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <rect x="2" y="2" width="20" height="20" rx="5"/>
+              <circle cx="12" cy="12" r="4.5"/>
+              <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+            </svg>
+          </a>
+
+          <a href="https://github.com/caduavelarr" target="_blank" rel="noopener"
+             class="social__ico" aria-label="GitHub">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.604-3.369-1.34-3.369-1.34-.454-1.155-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .268.18.579.688.481C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/>
+            </svg>
+          </a>
+
+          <a href="https://www.linkedin.com/in/carlos-eduardo-de-avelar-rodrigues-5660263b5/" target="_blank" rel="noopener"
+             class="social__ico" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <rect x="2" y="2" width="20" height="20" rx="4"/>
+              <path d="M7 10v7M7 7v.01" stroke-linecap="round"/>
+              <path d="M11 17v-4c0-1.105.895-2 2-2s2 .895 2 2v4M11 10v7" stroke-linecap="round"/>
+            </svg>
+          </a>
+
+          <a href="mailto:caduavelarr.dev@gmail.com" class="social__ico" aria-label="Email">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <rect x="2" y="4" width="20" height="16" rx="3"/>
+              <path d="M2 7l10 7 10-7" stroke-linecap="round"/>
+            </svg>
+          </a>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer__row">
+      <p class="footer__copy">© <span id="year"></span> Cadu Avelar</p>
+      <a href="#inicio" class="footer__top">↑ Topo</a>
+    </div>
+  </footer>
+
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Hambúrguer
+    const hbg = document.getElementById('hamburger');
+    const mnav = document.getElementById('mobileNav');
+    hbg.addEventListener('click', () => {
+      const open = hbg.getAttribute('aria-expanded') === 'true';
+      hbg.setAttribute('aria-expanded', String(!open));
+      hbg.classList.toggle('is-open');
+      mnav.classList.toggle('is-open');
+      document.body.classList.toggle('no-scroll');
+    });
+    document.querySelectorAll('[data-nav]').forEach(l => l.addEventListener('click', () => {
+      hbg.setAttribute('aria-expanded','false');
+      hbg.classList.remove('is-open');
+      mnav.classList.remove('is-open');
+      document.body.classList.remove('no-scroll');
+    }));
+
+    // Header scroll
+    const hdr = document.getElementById('header');
+    window.addEventListener('scroll', () => hdr.classList.toggle('scrolled', scrollY > 10), { passive: true });
+
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(a => a.addEventListener('click', e => {
+      const t = document.querySelector(a.getAttribute('href'));
+      if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth' }); }
+    }));
+
+    // Reveal on scroll
+    const revObs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in-view'); revObs.unobserve(e.target); }});
+    }, { threshold: 0.07 });
+    document.querySelectorAll('.anim').forEach(el => revObs.observe(el));
+  </script>
+
+</body>
+</html>

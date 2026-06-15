@@ -1,0 +1,663 @@
+/* ================================================================
+   CADU AVELAR — style.css
+   Tema escuro fiel ao site original
+   ================================================================ */
+
+/* ---------------------------------------------------------------
+   VARIÁVEIS
+--------------------------------------------------------------- */
+:root {
+  --bg:          #1a1a1a;      /* fundo geral — cinza muito escuro */
+  --bg-dark:     #111111;      /* seções ainda mais escuras */
+  --bg-card:     #222222;
+  --txt:         #ffffff;
+  --txt-muted:   #888888;
+  --txt-dim:     #555555;
+  --accent:      #ffffff;
+  --border:      rgba(255,255,255,.08);
+
+  --font: 'Inter', system-ui, sans-serif;
+
+  --max-w: 1200px;
+  --pad:   clamp(1.25rem, 5vw, 3rem);
+
+  --ease: cubic-bezier(.4,0,.2,1);
+  --dur:  300ms;
+}
+
+/* ---------------------------------------------------------------
+   RESET
+--------------------------------------------------------------- */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font);
+  background: var(--bg-dark);
+  color: var(--txt);
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+body.no-scroll { overflow: hidden; }
+img { display: block; max-width: 100%; height: auto; }
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; cursor: pointer; background: none; border: none; }
+
+/* ---------------------------------------------------------------
+   CONTAINER
+--------------------------------------------------------------- */
+.container {
+  width: 100%;
+  max-width: var(--max-w);
+  margin-inline: auto;
+  padding-inline: var(--pad);
+}
+
+/* ---------------------------------------------------------------
+   HEADER — fundo quase preto, logo branco, links brancos
+--------------------------------------------------------------- */
+.header {
+  position: fixed;
+  inset-block-start: 0;
+  inset-inline: 0;
+  z-index: 200;
+  background: rgba(17, 17, 17, 0.92);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid transparent;
+  transition: border-color var(--dur) var(--ease);
+}
+.header.scrolled { border-bottom-color: var(--border); }
+
+.header__inner {
+  max-width: var(--max-w);
+  margin-inline: auto;
+  padding-inline: var(--pad);
+  height: 60px;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* Logo */
+.header__logo {
+  font-size: .95rem;
+  font-weight: 500;
+  color: var(--txt);
+  letter-spacing: .01em;
+  margin-right: auto;
+}
+
+/* Links nav */
+.header__nav {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+.header__link {
+  font-size: .85rem;
+  font-weight: 500;
+  color: var(--txt);
+  letter-spacing: .01em;
+  opacity: .75;
+  transition: opacity var(--dur);
+}
+.header__link:hover,
+.header__link--active { opacity: 1; }
+
+/* Ícone busca */
+.header__search {
+  color: var(--txt);
+  opacity: .7;
+  display: flex;
+  align-items: center;
+  padding: 4px;
+  transition: opacity var(--dur);
+}
+.header__search:hover { opacity: 1; }
+
+/* Hambúrguer */
+.header__hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  width: 32px;
+  height: 32px;
+  padding: 5px;
+  align-items: flex-end;
+}
+.header__hamburger span {
+  display: block;
+  height: 1.5px;
+  background: var(--txt);
+  border-radius: 2px;
+  transition: transform var(--dur) var(--ease), opacity var(--dur), width var(--dur);
+}
+.header__hamburger span:nth-child(1) { width: 100%; }
+.header__hamburger span:nth-child(2) { width: 70%; }
+.header__hamburger span:nth-child(3) { width: 100%; }
+.header__hamburger.is-open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); width: 100%; }
+.header__hamburger.is-open span:nth-child(2) { opacity: 0; }
+.header__hamburger.is-open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); width: 100%; }
+
+/* Mobile nav */
+.header__mobile-nav {
+  position: fixed;
+  inset: 60px 0 0;
+  background: var(--bg-dark);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2.5rem;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(-12px);
+  transition: opacity var(--dur) var(--ease), transform var(--dur) var(--ease);
+  z-index: 199;
+}
+.header__mobile-nav.is-open { pointer-events: auto; opacity: 1; transform: translateY(0); }
+.header__mobile-link {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--txt);
+  letter-spacing: -.01em;
+}
+
+
+/* ---------------------------------------------------------------
+   HERO — fundo escuro com imagem de mesa, foto com moldura
+--------------------------------------------------------------- */
+.hero {
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  align-items: flex-end;     /* conteúdo fica na parte inferior */
+  padding-bottom: clamp(3rem, 8vw, 6rem);
+  overflow: hidden;
+}
+
+/* Imagem de fundo (mesa/tech) */
+.hero__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+.hero__bg-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center right;
+}
+/* Placeholder quando hero.jpg não existe */
+.hero__bg-placeholder {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 80% at 80% 40%, #2a2a2a 0%, #111 100%);
+}
+
+/* Overlay com gradiente da esq pra dir — escurece metade esquerda */
+.hero__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    to right,
+    rgba(10,10,10,.95) 0%,
+    rgba(10,10,10,.80) 35%,
+    rgba(10,10,10,.40) 60%,
+    rgba(10,10,10,.15) 100%
+  );
+}
+
+/* Conteúdo do hero */
+.hero__content {
+  position: relative;
+  z-index: 2;
+  padding-inline: var(--pad);
+  max-width: var(--max-w);
+  margin-inline: auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* Foto com moldura de cantos — igual ao original */
+.hero__photo-wrap {
+  position: relative;
+  width: clamp(180px, 22vw, 280px);
+  aspect-ratio: 3 / 4;
+}
+
+/* Moldura: dois L nos cantos opostos */
+.hero__frame-tl,
+.hero__frame-br {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  z-index: 2;
+  pointer-events: none;
+}
+.hero__frame-tl {
+  top: -6px;
+  left: -6px;
+  border-top: 2px solid rgba(255,255,255,.7);
+  border-left: 2px solid rgba(255,255,255,.7);
+}
+.hero__frame-br {
+  bottom: -6px;
+  right: -6px;
+  border-bottom: 2px solid rgba(255,255,255,.7);
+  border-right: 2px solid rgba(255,255,255,.7);
+}
+
+/* Foto dentro do frame */
+.hero__photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 2px;
+  z-index: 1;
+}
+
+/* Placeholder da foto */
+.hero__photo-ph {
+  position: absolute;
+  inset: 0;
+  background: #2a2a2a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: .7rem;
+  color: #555;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  z-index: 0;
+}
+.hero__photo-ph::after { content: 'sobre.jpg'; }
+
+/* Nome e função */
+.hero__text { display: flex; flex-direction: column; gap: .4rem; }
+.hero__name {
+  font-size: clamp(2.4rem, 6vw, 5rem);
+  font-weight: 800;
+  letter-spacing: -.03em;
+  line-height: 1;
+  color: var(--txt);
+}
+.hero__role {
+  font-size: clamp(.85rem, 1.5vw, 1rem);
+  font-weight: 400;
+  color: var(--txt-muted);
+  letter-spacing: .01em;
+}
+
+/* Seta para baixo */
+.hero__down {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  color: rgba(255,255,255,.5);
+  display: flex;
+  animation: bounce 2s ease-in-out infinite;
+}
+@keyframes bounce {
+  0%,100% { transform: translateX(-50%) translateY(0); }
+  50%      { transform: translateX(-50%) translateY(6px); }
+}
+
+
+/* ---------------------------------------------------------------
+   CITAÇÃO
+--------------------------------------------------------------- */
+.citacao {
+  background: var(--bg-dark);
+  padding-block: clamp(3rem, 7vw, 6rem);
+  text-align: center;
+}
+.citacao__frase {
+  font-size: clamp(1.4rem, 3.5vw, 2.4rem);
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -.02em;
+  color: var(--txt);
+  margin-bottom: 1rem;
+}
+.citacao__autor {
+  font-size: .9rem;
+  font-style: normal;
+  color: var(--txt-muted);
+  font-weight: 400;
+}
+
+
+/* ---------------------------------------------------------------
+   SOBRE MIM
+--------------------------------------------------------------- */
+.sobre {
+  background: var(--bg-dark);
+  padding-block: clamp(2rem, 5vw, 4rem) clamp(3rem, 7vw, 6rem);
+}
+.sobre__titulo {
+  font-size: clamp(1.6rem, 4vw, 2.5rem);
+  font-weight: 700;
+  letter-spacing: -.02em;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+.sobre__bio {
+  font-size: clamp(.85rem, 1.4vw, .95rem);
+  color: rgba(255,255,255,.75);
+  line-height: 1.75;
+  max-width: 800px;
+  margin-inline: auto;
+  margin-bottom: 2.5rem;
+  text-align: left;
+}
+
+/* Galeria 5 fotos em linha */
+.sobre__galeria {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: clamp(.4rem, 1vw, .75rem);
+}
+.sobre__gfoto {
+  position: relative;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  border-radius: 4px;
+  background: #2a2a2a;
+}
+.sobre__gfoto img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .5s var(--ease);
+}
+.sobre__gfoto:hover img { transform: scale(1.05); }
+
+/* Placeholder galeria */
+.sobre__gfoto.ph img { display: none; }
+.gfoto__ph {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: .65rem;
+  color: #444;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+.sobre__gfoto:not(.ph) .gfoto__ph { display: none; }
+
+
+/* ---------------------------------------------------------------
+   HABILIDADES
+--------------------------------------------------------------- */
+.habilidades {
+  background: var(--bg-dark);
+  padding-block: clamp(3rem, 7vw, 6rem);
+  border-top: 1px solid var(--border);
+}
+.habilidades__titulo {
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  font-weight: 800;
+  letter-spacing: -.03em;
+  line-height: 1.1;
+  margin-bottom: clamp(2rem, 5vw, 4rem);
+}
+
+/* Linha com foto + lista */
+.hab__row {
+  display: grid;
+  grid-template-columns: 420px 1fr;
+  gap: clamp(2rem, 5vw, 5rem);
+  align-items: center;
+  margin-bottom: clamp(3rem, 6vw, 5rem);
+}
+.hab__row--inv {
+  grid-template-columns: 1fr 520px;
+  margin-bottom: 0;
+}
+
+/* Foto lateral */
+.hab__foto-wrap {
+  position: relative;
+  border-radius: 6px;
+  overflow: hidden;
+  background: #2a2a2a;
+  aspect-ratio: 4/3;
+}
+.hab__foto-wrap--code { aspect-ratio: 16/9; }
+.hab__foto {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.hab__foto-wrap.ph .hab__foto { display: none; }
+.habfoto__ph {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: .65rem;
+  color: #444;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+.hab__foto-wrap:not(.ph) .habfoto__ph { display: none; }
+
+/* Lista de habilidades */
+.hab__lista {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.hab__item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.25rem;
+}
+.hab__item--lg {
+  padding-block: 1rem;
+}
+
+/* Número */
+.hab__num {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--txt-dim);
+  min-width: 2.5rem;
+  letter-spacing: -.02em;
+  line-height: 1;
+  padding-top: 3px;
+}
+
+/* Nome e descrição */
+.hab__nome {
+  font-size: clamp(.95rem, 2vw, 1.3rem);
+  font-weight: 700;
+  letter-spacing: -.02em;
+  margin-bottom: .35rem;
+  line-height: 1.2;
+}
+.hab__desc {
+  font-size: .85rem;
+  color: var(--txt-muted);
+  line-height: 1.6;
+}
+
+
+/* ---------------------------------------------------------------
+   CONTATO
+--------------------------------------------------------------- */
+.contato {
+  background: var(--bg-dark);
+  padding-block: clamp(3rem, 7vw, 6rem);
+  border-top: 1px solid var(--border);
+}
+.contato__titulo {
+  font-size: clamp(1.6rem, 4vw, 2.5rem);
+  font-weight: 800;
+  letter-spacing: -.03em;
+  margin-bottom: 2.5rem;
+}
+
+/* Dados de contato */
+.contato__dados {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin-bottom: 3rem;
+}
+.contato__campo { display: flex; flex-direction: column; gap: .25rem; }
+.contato__label {
+  font-size: .8rem;
+  font-weight: 600;
+  color: var(--txt-muted);
+  letter-spacing: .04em;
+}
+.contato__valor {
+  font-size: .9rem;
+  color: var(--txt);
+  transition: color var(--dur);
+}
+.contato__valor:hover { color: #aaa; }
+
+/* Redes sociais */
+.contato__redes-bloco {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+.contato__redes-titulo {
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  font-weight: 800;
+  letter-spacing: -.02em;
+  white-space: nowrap;
+}
+.contato__icones {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  margin-left: auto;
+}
+
+/* Ícone de rede social — círculo branco com ícone preto */
+.social__ico {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: var(--txt);
+  color: var(--bg-dark);
+  transition: background var(--dur), transform var(--dur) var(--ease);
+  flex-shrink: 0;
+}
+.social__ico svg { width: 18px; height: 18px; }
+.social__ico:hover { background: #ccc; transform: scale(1.08); }
+
+
+/* ---------------------------------------------------------------
+   FOOTER
+--------------------------------------------------------------- */
+.footer {
+  background: var(--bg-dark);
+  border-top: 1px solid var(--border);
+  padding-block: 1.5rem;
+}
+.footer__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.footer__copy { font-size: .75rem; color: var(--txt-dim); }
+.footer__top {
+  font-size: .75rem;
+  color: var(--txt-muted);
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  transition: color var(--dur);
+}
+.footer__top:hover { color: var(--txt); }
+
+
+/* ---------------------------------------------------------------
+   REVEAL ANIMATION
+--------------------------------------------------------------- */
+.anim {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity .6s var(--ease), transform .6s var(--ease);
+}
+.anim.in-view { opacity: 1; transform: translateY(0); }
+
+
+/* ---------------------------------------------------------------
+   RESPONSIVIDADE — Tablet (≤ 900px)
+--------------------------------------------------------------- */
+@media (max-width: 900px) {
+
+  .hab__row,
+  .hab__row--inv {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .hab__row--inv .hab__item--lg { order: -1; }
+
+  .sobre__galeria { grid-template-columns: repeat(3, 1fr); }
+  .sobre__galeria .sobre__gfoto:nth-child(4),
+  .sobre__galeria .sobre__gfoto:nth-child(5) { display: none; }
+
+}
+
+
+/* ---------------------------------------------------------------
+   RESPONSIVIDADE — Mobile (≤ 640px)
+--------------------------------------------------------------- */
+@media (max-width: 640px) {
+
+  /* Header */
+  .header__nav, .header__search { display: none; }
+  .header__hamburger { display: flex; }
+
+  /* Hero */
+  .hero { align-items: flex-end; padding-bottom: 3.5rem; }
+  .hero__photo-wrap { width: clamp(140px, 42vw, 200px); }
+  .hero__name { font-size: clamp(1.8rem, 10vw, 3rem); }
+
+  /* Galeria: 2 colunas */
+  .sobre__galeria { grid-template-columns: repeat(2, 1fr); }
+  .sobre__galeria .sobre__gfoto:nth-child(4),
+  .sobre__galeria .sobre__gfoto:nth-child(5) { display: block; }
+  .sobre__galeria .sobre__gfoto:nth-child(5) { display: none; }
+
+  /* Redes sociais no contato */
+  .contato__redes-bloco { flex-direction: column; align-items: flex-start; gap: 1rem; }
+  .contato__icones { margin-left: 0; }
+
+  /* Footer */
+  .footer__row { flex-direction: column; text-align: center; }
+
+}
+
+
+/* ---------------------------------------------------------------
+   ACESSIBILIDADE
+--------------------------------------------------------------- */
+:focus-visible {
+  outline: 2px solid rgba(255,255,255,.6);
+  outline-offset: 3px;
+}
